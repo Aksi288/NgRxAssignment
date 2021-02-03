@@ -17,7 +17,6 @@ export class MessageDisplayService {
   }
 
   failureMessage(error: string): void {
-    debugger
     this.toastrService.error(error, 'Error', {
       easing:'ease-in',
       easeTime: 300,

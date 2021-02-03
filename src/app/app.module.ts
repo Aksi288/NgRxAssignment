@@ -16,6 +16,8 @@ import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { EffectsModule } from '@ngrx/effects';
 import { appReducer } from './shared-state/app.state';
 import { ToastrModule } from 'ngx-toastr';
+import { StoreRouterConnectingModule } from '@ngrx/router-store';
+import { CustomSerializer } from './shared-state/router/custom-serializer';
 @NgModule({
   declarations: [
     AppComponent,
@@ -36,6 +38,9 @@ import { ToastrModule } from 'ngx-toastr';
     StoreModule.forRoot(appReducer),
     StoreDevtoolsModule.instrument({
       logOnly: environment.production,
+    }),
+    StoreRouterConnectingModule.forRoot({
+      serializer: CustomSerializer,
     }),
   ],
   providers: [],
