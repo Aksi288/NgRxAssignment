@@ -17,8 +17,7 @@ export const initialState: LodingState = {
 
 
 
-export function LodingReducer(state = initialState, action: loadingActions): LodingState {
-
+export function LodingReducer(state = initialState, action: loadingActions) {
   switch (action.type) {
 
     case loadingActionTypes.SET_LOADING_ACTION:
@@ -33,6 +32,10 @@ export function LodingReducer(state = initialState, action: loadingActions): Lod
         ...state,
         errorMessage: action.payload,
       };
+      default: return {
+        ...state
+      }
+
 
   
 }

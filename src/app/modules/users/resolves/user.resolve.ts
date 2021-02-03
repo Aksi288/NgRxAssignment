@@ -18,7 +18,6 @@ export class EditUserResolve implements Resolve<any> {
   constructor(private userService: UserService,private store: Store<AppState>) {}
 
   resolve(route: ActivatedRouteSnapshot, state: RouterStateSnapshot) {
-    debugger;
     let userid = route.params.userid;
       this.store.dispatch(new GetUser(userid));
   }

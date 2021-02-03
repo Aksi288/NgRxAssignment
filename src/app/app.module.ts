@@ -13,6 +13,9 @@ import { CoreModule } from './core/core.module';
 // import { appReducer } from './common-state/app.state';
 export let InjectorInstance: Injector;
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
+import { EffectsModule } from '@ngrx/effects';
+import { appReducer } from './shared-state/app.state';
+import { ToastrModule } from 'ngx-toastr';
 @NgModule({
   declarations: [
     AppComponent,
@@ -23,7 +26,17 @@ import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
     BrowserModule,
     AppRoutingModule,
     CoreModule,
-    BrowserAnimationsModule
+    ToastrModule.forRoot({
+			positionClass: 'toast-bottom-right',
+			preventDuplicates: true,
+			closeButton:true
+		  }),
+    BrowserAnimationsModule,
+    EffectsModule.forRoot([]),
+    StoreModule.forRoot(appReducer),
+    StoreDevtoolsModule.instrument({
+      logOnly: environment.production,
+    }),
   ],
   providers: [],
   bootstrap: [AppComponent]

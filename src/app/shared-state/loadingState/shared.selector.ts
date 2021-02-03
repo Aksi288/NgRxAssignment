@@ -6,7 +6,6 @@ export const SHARED_LOADING_NAME = 'loading';
 const getLoadingState = createFeatureSelector<LodingState>(SHARED_LOADING_NAME);
 
 export const getLoading = createSelector(getLoadingState, (state) => {
-  debugger
   return state.showLoading;
 });
 

@@ -58,34 +58,28 @@ export class UsersListComponent implements OnInit {
 
 
   ngOnInit(): void {
-debugger
 this.loadingSubject.next(true)
 this.totalData$.next(0);
 this.data.next([])
-
     this.store.pipe(select(getAllUser))
       .subscribe(
         (response) => {
           debugger
           this.loadingSubject.next(false);
           this.totalData$.next(response.length);
-         // this.data.next(response);
           this.dataSource.data = response
         },
         (error) => of([])
       );
-
+debugger
     this.store.dispatch(new LoadAllUser());
-
-    // this.paginator.page.subscribe((data) => {
-    //   this.pageIndex = data.pageIndex + 1 ;
-    //   this.pageSize = data.pageSize ;
-    //   debugger
-    // });
   }
 
 
+  ngOnDestroy(){
 
+
+}
 
   ngAfterViewInit(): void {   
     this.dataSource.paginator = this.paginator;

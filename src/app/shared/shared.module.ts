@@ -32,6 +32,7 @@ import {
 } from '@angular/material';
 import { ConfirmationDialog } from './components/confirmation-dialog.component';
 import { LoadingSpinnerComponent } from './components/loading-spinner/loading-spinner.component';
+import { MessageDisplayService } from './service/message-display.service';
 
 @NgModule({
   declarations: [ConfirmationDialog],
@@ -65,6 +66,7 @@ import { LoadingSpinnerComponent } from './components/loading-spinner/loading-sp
   MatToolbarModule,
   MatTooltipModule,
   ],
+  providers:[MessageDisplayService],
   entryComponents:[ConfirmationDialog]
 })
 export class SharedModule { }

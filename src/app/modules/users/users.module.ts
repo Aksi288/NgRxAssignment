@@ -5,12 +5,12 @@ import { Routes, RouterModule } from '@angular/router';
 
 import { UsersListComponent } from './users-list/users-list.component';
 import { StoreModule, ActionReducerMap } from '@ngrx/store';
-import * as userReducer from '../users/state/user.reducer';
+
 import { UserService } from './service/user.service';
 import { CoreModule } from 'src/app/core/core.module';
 import { EffectsModule } from '@ngrx/effects';
 import { UsersEffects } from './state/user.effects';
-
+import {userReducer} from '../users/state/user.reducer'
 import {
 	MatInputModule,
 	MatPaginatorModule,
@@ -58,13 +58,10 @@ import { UsersComponent } from './users.component'
 import { UserEditComponent } from './user-edit/user-edit.component';
 import { EditUserResolve } from './resolves/user.resolve';
 import { SharedModule } from 'src/app/shared/shared.module';
+import { User_STATE_NAME } from './state/user.selector';
 
 
 
-export const reducers: ActionReducerMap<any> = {
-  user: userReducer.reducer,
-
-};
 
 let effects: Array<any> = [UsersEffects];
 const routes: Routes = [
@@ -94,8 +91,8 @@ const routes: Routes = [
   imports: [
     CommonModule,
     RouterModule.forChild(routes),
-    StoreModule.forRoot(reducers),
-    EffectsModule.forRoot(effects),
+    StoreModule.forFeature(User_STATE_NAME, userReducer),
+    EffectsModule.forFeature(effects),
     SharedModule,
     CoreModule,
     MatInputModule,

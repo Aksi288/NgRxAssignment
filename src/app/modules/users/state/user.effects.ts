@@ -16,18 +16,19 @@ import {GetUser,
     UpdateUserAction,
     UpdateUserSuccess} from './user.action'
 
-import {Observable} from 'rxjs';
+import {Observable, of} from 'rxjs';
 import {Action} from '@ngrx/store';
 import {UserService} from '../service/user.service';
 import {User} from '../../../models/user.model';
 import {catchError, map, switchMap} from 'rxjs/operators';
 import { Router } from '@angular/router';
+import { MessageDisplayService } from 'src/app/shared/service/message-display.service';
 
 @Injectable()
 export class UsersEffects {
   constructor(private actions$: Actions,
               private userService: UserService,
-              private router: Router,) {
+              private router: Router,private mssageDisplayService :MessageDisplayService) {
   }
 
   @Effect()
@@ -35,11 +36,13 @@ export class UsersEffects {
     ofType(userAction.userActionTypes.LOAD_USER),
     switchMap(() => this.userService.getAllUser()),
     map((users) => {
-      debugger
-     
      return new LoadAllUserSuccess(users)
     }),
-    catchError((err) => [new LoadAllUserFail(err)])
+    catchError((err) => {
+      debugger;
+      this.mssageDisplayService.failureMessage("Users Loading Fail.")
+     return of(new LoadAllUserFail(err))
+    })
   );
 
   @Effect()
@@ -47,7 +50,13 @@ export class UsersEffects {
     ofType(userAction.userActionTypes.GET_USER),
     map((action: GetUser) => action.payload),
     switchMap(id => this.userService.getUserById(id)),
-    map(user => new GetUserSuccess(user)),
+    map(user =>{
+
+      return new GetUserSuccess(user)
+      
+      
+    }
+),
     catchError((err) => [new GetUserFail(err)])
   );
 
@@ -57,10 +66,18 @@ export class UsersEffects {
     ofType(userAction.userActionTypes.UPDATE_USER_ACTION),
     map((action: UpdateUserAction) => action.payload),
     switchMap(user => this.userService.updateUser(user)),
-    map(() => {
-     debugger
-      new UpdateUserSuccess()}),
-    catchError((err) => [new UpdateUserFail(err)])
+    map((data) => {
+      debugger
+     
+      this.mssageDisplayService.successMessage("User Updated Successfully.")
+      return new UpdateUserSuccess(data)
+
+    }
+      ),
+    catchError((err) => {
+      this.mssageDisplayService.failureMessage("User Update Failed.")
+     return of(new UpdateUserFail(err))
+    })
   );
 
   @Effect()
@@ -71,8 +88,14 @@ export class UsersEffects {
     map((response) => {
       debugger
      
-      new AddUserSuccess (response.id)}),
-    catchError((err) => [new AddUserFail(err)])
+      this.mssageDisplayService.successMessage("User Add Successfully.")
+      new AddUserSuccess (response.id)
+
+    }),
+    catchError((err) => {
+      this.mssageDisplayService.failureMessage("User Add Failed.")
+      return of(new AddUserFail(err))
+    })
   );
 
   @Effect()
@@ -80,7 +103,13 @@ export class UsersEffects {
     ofType(userAction.userActionTypes.DELETE_USER_ACTION),
     map((action: DeleteUserAction) => action.payload),
     switchMap(id => this.userService.deleteUser(id)),
-    map((user: User) => new DeleteUserSuccess(user)),
-    catchError((err) => [new DeleteUserFail(err)])
+    map((user: User) =>{
+      this.mssageDisplayService.successMessage("User Removed Successfully.")
+      return new DeleteUserSuccess(user)
+    } ),
+    catchError((err) => {
+      this.mssageDisplayService.failureMessage("User Remove Failed.")
+      return of(new DeleteUserFail(err))
+    })
   );
 }

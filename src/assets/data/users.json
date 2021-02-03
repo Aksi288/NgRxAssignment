@@ -1,18 +1,11 @@
 {
   "users": [
     {
-      "id": 2,
-      "name": "ABhishek",
-      "email": "zjhxcjhzxbjc",
-      "Address": "25374123",
-      "contact": "23423423423"
-    },
-    {
-      "id": 3,
-      "name": "ABhishek",
-      "email": "test",
-      "Address": "test",
-      "contact": "1312312"
+      "id": 1,
+      "name": "test",
+      "email": "hjsbvjsdbjf",
+      "Address": "zhvdcsdvh",
+      "contact": "2534712573"
     }
   ]
 }

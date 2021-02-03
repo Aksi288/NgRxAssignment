@@ -20,7 +20,7 @@ const initialState: userState = {
   error: null
 };
 
-export function reducer(state = initialState, action: userActions): userState {
+export function userReducer(state = initialState, action: userActions) {
 
   switch (action.type) {
 

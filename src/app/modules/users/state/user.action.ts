@@ -34,6 +34,7 @@ export enum userActionTypes {
 
 export class LoadAllUser implements Action {
     readonly type = userActionTypes.LOAD_USER;
+    constructor( ) { debugger}
 }
 
 export class LoadAllUserSuccess implements Action {
@@ -43,7 +44,7 @@ export class LoadAllUserSuccess implements Action {
 
 export class LoadAllUserFail implements Action {
     readonly type = userActionTypes.LOAD_USER_FAIL;
-    constructor(public payload: any ) { }
+    constructor(public payload: any ) {debugger }
 }
 
 
@@ -95,7 +96,8 @@ export class UpdateUserAction implements Action {
 
 export class UpdateUserSuccess implements Action {
     readonly type = userActionTypes.UPDATE_USER_SUCCESS;
-    
+    constructor(public payload:  User ) {
+     }
 }
 
 export class UpdateUserFail implements Action {

@@ -6,7 +6,7 @@ import { userActionTypes } from './user.action';
 
 export const getUserState = createFeatureSelector < userState > (User_STATE_NAME);
 
-export const getAllUser = createSelector(getUserState, (state: userState) =>  {debugger; return state.data});
+export const getAllUser = createSelector(getUserState, (state: userState) =>  { debugger; return state.data});
 
 
 export const getUser = createSelector(getUserState, (state: userState) => {
