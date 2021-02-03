@@ -1,12 +1,25 @@
 import { createFeatureSelector, createSelector } from '@ngrx/store';
 import { userState } from './user.reducer';
 import { userActionTypes } from './user.action';
+import { getCurrentRoute } from 'src/app/shared-state/router/router.selector';
+import { RouterStateUrl } from 'src/app/shared-state/router/custom-serializer';
 
  export const User_STATE_NAME = 'user';
 
 export const getUserState = createFeatureSelector < userState > (User_STATE_NAME);
 
-export const getAllUser = createSelector(getUserState, (state: userState) =>  { debugger; return state.data});
+export const getAllUser = createSelector(getUserState, (state: userState) =>  { return state.data});
+
+
+export const getUserById = createSelector(
+  getAllUser,
+  getCurrentRoute,
+  (routeData, route: RouterStateUrl) => {
+    return routeData ? routeData.find((routeData) => routeData.id == route.params['userid']) : null;
+  }
+);
+
+
 
 
 export const getUser = createSelector(getUserState, (state: userState) => {

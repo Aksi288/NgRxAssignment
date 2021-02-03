@@ -64,14 +64,12 @@ this.data.next([])
     this.store.pipe(select(getAllUser))
       .subscribe(
         (response) => {
-          debugger
           this.loadingSubject.next(false);
           this.totalData$.next(response.length);
           this.dataSource.data = response
         },
         (error) => of([])
       );
-debugger
     this.store.dispatch(new LoadAllUser());
   }
 

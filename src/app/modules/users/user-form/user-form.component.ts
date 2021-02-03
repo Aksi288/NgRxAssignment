@@ -1,12 +1,12 @@
 import { Component, OnInit, Output,EventEmitter, Input } from "@angular/core";
 import { ActivatedRoute, Router } from "@angular/router";
 import { FormGroup, FormControl, Validators, FormArray } from '@angular/forms';
-import { Observable } from 'rxjs';
+import { Observable, Subscription } from 'rxjs';
 import { UserService } from '../service/user.service';
 
 import { AppState } from 'src/app/shared-state/app.state';
 import { Store } from '@ngrx/store';
-import { getUser } from '../state/user.selector';
+import { getUser, getUserById } from '../state/user.selector';
 
 
 
@@ -35,7 +35,7 @@ export class UserFormComponent implements OnInit {
   @Input()isViewMode : boolean;
   @Input() userData : any
 
-
+  userSubscription: Subscription;
   
 
 
@@ -75,15 +75,24 @@ export class UserFormComponent implements OnInit {
   isEditForm(){
 
     if(this.mode == "edit" && !this.userData){
+      // this.store.select(getUser).subscribe(user => {
+      //   if(user)
+      //   this.usersForm.patchValue(user);
+      //   });
+      this.store.select(getUserById).subscribe((user) => {
+        if (user) {
+          this.usersForm.patchValue(user);
+        }else{
+        
+        }
+      });
 
-      this.store.select(getUser).subscribe(user => {
-        if(user)
-        this.usersForm.patchValue(user);
-        });
-    
     }
     if(this.isViewMode){
-      this.usersForm.patchValue(this.userData);
+      debugger
+ 
+
+     this.usersForm.patchValue(this.userData);
       this.usersForm.disable();   
   }
 }
@@ -124,7 +133,11 @@ export class UserFormComponent implements OnInit {
       return this.usersForm.controls.contact;
     }
  
-    
+    ngOnDestroy() {
+      if (this.userSubscription) {
+        this.userSubscription.unsubscribe();
+      }
+    }
  
 }
 
