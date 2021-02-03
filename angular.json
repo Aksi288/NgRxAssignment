@@ -1,6 +1,6 @@
 {
   "$schema": "./node_modules/@angular/cli/lib/config/schema.json",
-  "version": 1, 
+  "version": 1,
   "newProjectRoot": "projects",
   "projects": {
     "NgRxAssignment": {
@@ -123,6 +123,11 @@
           }
         }
       }
-    }},
-  "defaultProject": "NgRxAssignment"
+    }
+  },
+  "defaultProject": "NgRxAssignment",
+  "cli": {
+    "analytics": "31a48976-d730-4ad2-ac31-31bd74783e11",
+    "defaultCollection": "@ngrx/schematics"
+  }
 }

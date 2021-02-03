@@ -1,0 +1,28 @@
+
+  
+<div class="container">
+  <h4> {{text}}</h4>
+ 
+ 
+  
+
+
+    <user-form #userFormRef  (whenSubmitClicked)="whenSubmitClicked($event)" [mode]="'edit'"
+    (whenCancelClicked)="whenCancelClicked()"  (whenCloseClicked)="whenCloseClicked()" [isViewMode]="isViewMode" [userData]="userData" >
+    <ng-container *ngIf="!isViewMode">
+    <button type="submit" 
+    [disabled]="!userFormRef.usersForm.valid"  class="btn btn-primary btn-md btn-tall btn-wide kt-font-bold kt-font-transform-u"
+    data-ktwizard-type="action-submit">
+    Update
+  </button>
+  </ng-container>
+  
+  </user-form>
+    </div>
+
+
+
+
+ 
+ 
+<br/>

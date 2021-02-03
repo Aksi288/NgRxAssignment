@@ -1,0 +1,98 @@
+.inner-box{
+    border-radius: 3px;
+    .inner-box{
+        padding: 20px;
+    }
+    .scroll{
+        overflow: hidden auto;
+        min-height: 100px;
+        max-height: 200px;
+    }
+}
+.kt-form__heading{
+    margin-bottom: 12px;
+}
+.two-color-col{
+    margin-right: 0px;
+    margin-left: 0px;
+    .col-md-3{
+        padding: 20px;
+        background: #ffffff;
+        border-right: 1px solid #ccc;
+        height: 450px;
+        overflow: auto;
+        .form-group{
+            padding-left: 15px;
+        }
+    }
+    h3{
+        color: #774aa2;
+        font-size: 15px;
+        margin-bottom: 10px;
+        font-weight: 600;
+    }
+    .col-md-9{
+        padding: 20px;
+    }
+    .list-style{
+        padding-left: 45px;
+        li{
+            .button-link{
+                font-size: 14px;
+                text-align: left;
+                &:disabled {
+                    cursor: not-allowed;
+                }
+                &:hover{
+                    text-decoration: none!important;
+                }
+            }
+            &.active{
+                .button-link{
+                    font-weight: bold;
+                }
+            }
+            &.disabled{
+                cursor: not-allowed;
+                .button-link{
+                    opacity: 0.8;
+                }
+            }
+        }
+    }
+    ::ng-deep .mat-checkbox-layout .mat-checkbox-label{
+        font-size: 14px;
+    }
+    ::ng-deep .mat-radio-button .mat-radio-label{
+        font-size: 14px;
+        color: #774aa2;
+        font-weight: bold;
+        align-items: flex-start;
+        .mat-radio-label-content{
+            white-space: normal;
+        }
+    }
+}
+
+.button-link {
+    background: none!important;
+    border: none;
+    padding: 0!important;
+    color:#774aa2;
+      font-weight: 400;
+      margin-bottom: 4px;
+  &:hover{
+      text-decoration: underline!important;
+  }
+    cursor: pointer;
+  }
+
+  .modal-footer{
+    position: sticky;
+    bottom: 0;
+    width: 100%;
+    background: #fff;
+    left: 0;
+    right: 0;
+  }
+  

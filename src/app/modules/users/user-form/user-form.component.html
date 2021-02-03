@@ -1,0 +1,60 @@
+<form [formGroup]="usersForm" (ngSubmit)="onSubmit()">
+
+  <div class="row">
+
+<!-- First Name Column -->
+<mat-form-field   class="col-6" appearance="outline">
+  <mat-label>Name</mat-label>
+  <input matInput type="text"  placeholder="Name"  formControlName="name" required>  
+  <mat-error *ngIf="NameControl.touched && NameControl.invalid">
+     name is <strong>required field</strong>
+   </mat-error>  
+</mat-form-field>
+  
+<mat-form-field    class="col-6" appearance="outline">
+  <mat-label>Address</mat-label>
+  <input matInput type="email"  placeholder="Email"  formControlName="Address" required> 
+  <mat-error *ngIf="adressControl.touched && adressControl.invalid">
+    Address is <strong>required field</strong>
+   </mat-error>    
+</mat-form-field>
+  
+  </div>
+
+  <div class="row" >
+
+    <mat-form-field    class="col-6" appearance="outline">
+      <mat-label>Email</mat-label>
+      <input matInput type="email"  placeholder="Email"  formControlName="email" required> 
+      <mat-error *ngIf="emailControl.touched && emailControl.invalid">
+        Email is <strong>required field</strong>
+       </mat-error>    
+    </mat-form-field>
+  
+
+    <mat-form-field    class="col-6" appearance="outline">
+      <mat-label>Phone Number</mat-label>
+      <input matInput type="email"  placeholder="Phone Number"  formControlName="contact" required> 
+      <mat-error *ngIf="contactControl.touched && contactControl.invalid">
+        Email is <strong>required field</strong>
+       </mat-error>    
+    </mat-form-field>
+
+     
+  </div>
+
+
+
+
+<div class="modal-footer" >
+  <ng-content  selector=".submit-button"></ng-content>
+  <div *ngIf="!isViewMode"  (click)="onCancel()" class="btn btn-secondary btn-md btn-tall btn-wide kt-font-bold kt-font-transform-u"
+    data-ktwizard-type="action-prev">
+    Cancel
+  </div>
+  <div *ngIf="isViewMode"  (click)="onClose()" class="btn btn-secondary btn-md btn-tall btn-wide kt-font-bold kt-font-transform-u"
+  data-ktwizard-type="action-prev">
+  Close
+</div>
+</div>
+</form>
