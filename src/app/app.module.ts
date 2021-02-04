@@ -16,16 +16,22 @@ import { appReducer } from './shared-state/app.state';
 import { ToastrModule } from 'ngx-toastr';
 import { StoreRouterConnectingModule } from '@ngrx/router-store';
 import { CustomSerializer } from './shared-state/router/custom-serializer';
+import { NotFoundPageComponent } from './components/not-found-page/not-found-page.component';
+import { AuthModule } from './modules/auth/auth.module';
+import { HttpClientModule } from '@angular/common/http';
 @NgModule({
   declarations: [
     AppComponent,
     HeaderComponent,
-    HomeComponent
+    HomeComponent,
+    NotFoundPageComponent
   ],
   imports: [
     BrowserModule,
     AppRoutingModule,
+    HttpClientModule,
     CoreModule,
+    AuthModule.forRoot(),
     ToastrModule.forRoot({
 			positionClass: 'toast-bottom-right',
 			preventDuplicates: true,

@@ -13,7 +13,7 @@ export class ApiService {
     return throwError(error.error);
   }
 
-  get(path: string, params: HttpParams = new HttpParams()): Observable<any> {
+  get(path: string, params): Observable<any> {
     return this.http
       .get(`${environment.api_url}${path}`, { params })
       .pipe(catchError(this.formatErrors));
@@ -25,9 +25,10 @@ export class ApiService {
       .pipe(catchError(this.formatErrors));
   }
 
-  post(path: string, body: Object = {}, headers): Observable<any> {
+  post(path: string, body: Object = {}, headers?): Observable<any> {
+    debugger
     return this.http
-      .post(`${environment.api_url}${path}`, JSON.stringify(body), {headers})
+      .post(`${environment.api_url}${path}`, JSON.stringify(body),{headers})
       .pipe(catchError(this.formatErrors));
   }
 

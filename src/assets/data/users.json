@@ -7,5 +7,16 @@
       "Address": "Noida",
       "contact": "238754872358"
     }
+  ],
+  "login":[
+    {
+      "id": 1,
+      "username": "Abhi@288",
+      "email": "abhik.msrit@gmail.com",
+      "password" : "1234567",
+      "Address": "Noida",
+      "contact": "238754872358",
+      "AuthToken": "123456"
+    }
   ]
 }

@@ -2,7 +2,8 @@ import { NgModule } from '@angular/core';
 import { CommonModule } from '@angular/common';
 import { ApiService } from './services';
 
-import { HttpClientModule } from '@angular/common/http';
+import { HttpClientModule, HTTP_INTERCEPTORS } from '@angular/common/http';
+
 
 
 @NgModule({
@@ -11,6 +12,7 @@ import { HttpClientModule } from '@angular/common/http';
     CommonModule,
     HttpClientModule
   ],
-  providers :[ApiService]
+  providers :[ApiService,
+ ]
 })
 export class CoreModule { }
