@@ -63,7 +63,7 @@ export class UserEditComponent implements OnInit {
  
   whenSubmitClicked(formData){
     this.store.dispatch(new UpdateUserAction(formData));
-   
+    this.router.navigate(["users/"]);
   }
 
 

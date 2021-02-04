@@ -32,7 +32,7 @@ export function LodingReducer(state = initialState, action: loadingActions) {
         ...state,
         errorMessage: action.payload,
       };
-      default: return {
+    default: return {
         ...state
       }
 

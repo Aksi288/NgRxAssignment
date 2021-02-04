@@ -6,7 +6,10 @@ import {environment} from '../../../../environments/environment'
 import { ApiService } from "../../../core/services/api.service";
 import { User } from 'src/app/models/user.model';
 
-@Injectable()
+@Injectable({
+  providedIn:'root'
+})
+
 export class UserService {
 
 

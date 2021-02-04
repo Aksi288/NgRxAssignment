@@ -92,7 +92,7 @@ const routes: Routes = [
     CommonModule,
     RouterModule.forChild(routes),
     StoreModule.forFeature(User_STATE_NAME, userReducer),
-    EffectsModule.forFeature(effects),
+    EffectsModule.forFeature([UsersEffects]),
     SharedModule,
     CoreModule,
     MatInputModule,
@@ -132,7 +132,7 @@ const routes: Routes = [
     MatTreeModule,
     ReactiveFormsModule,FormsModule
   ],
-  providers: [UserService,EditUserResolve,
+  providers: [EditUserResolve,
     { provide: MatDialogRef, useValue: {} },
 	{ provide: MAT_DIALOG_DATA, useValue: [] },
   ],

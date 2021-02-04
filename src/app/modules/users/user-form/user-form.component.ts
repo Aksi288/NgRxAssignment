@@ -75,17 +75,17 @@ export class UserFormComponent implements OnInit {
   isEditForm(){
 
     if(this.mode == "edit" && !this.userData){
-      // this.store.select(getUser).subscribe(user => {
-      //   if(user)
-      //   this.usersForm.patchValue(user);
-      //   });
-      this.store.select(getUserById).subscribe((user) => {
-        if (user) {
-          this.usersForm.patchValue(user);
-        }else{
+      this.store.select(getUser).subscribe(user => {
+        if(user)
+        this.usersForm.patchValue(user);
+        });
+      // this.store.select(getUserById).subscribe((user) => {
+      //   if (user) {
+      //     this.usersForm.patchValue(user);
+      //   }else{
         
-        }
-      });
+      //   }
+      // });
 
     }
     if(this.isViewMode){
