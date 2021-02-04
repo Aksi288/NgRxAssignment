@@ -37,9 +37,9 @@ import { CustomSerializer } from './shared-state/router/custom-serializer';
     StoreDevtoolsModule.instrument({
       logOnly: environment.production,
     }),
-    StoreRouterConnectingModule.forRoot({
-      serializer: CustomSerializer,
-    }),
+    // StoreRouterConnectingModule.forRoot({
+    //   serializer: CustomSerializer,
+    // }),
   ],
   providers: [],
   bootstrap: [AppComponent]

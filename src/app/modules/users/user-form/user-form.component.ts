@@ -26,7 +26,6 @@ export class UserFormComponent implements OnInit {
   @Output() whenCancelClicked: EventEmitter<any> = new EventEmitter();
   @Output()whenCloseClicked : EventEmitter<any> = new EventEmitter();
 
-  Category$ : Observable<any> ;
   public userID;
   public finalData: any[] = [];
 

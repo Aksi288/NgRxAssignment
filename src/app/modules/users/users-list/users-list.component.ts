@@ -74,23 +74,8 @@ this.data.next([])
   }
 
 
-  ngOnDestroy(){
-
-
-}
-
-  ngAfterViewInit(): void {   
-    this.dataSource.paginator = this.paginator;
-  }
-
-
-
-
-
-
 
   viewUser(user) {
-    // this.router.navigate(["users","edit",user], { queryParams: { view: 'true' } });
 
   	const modalRef = this.dialog.open(UserEditComponent, {
 		  width: `95%`,
@@ -110,10 +95,6 @@ this.data.next([])
 
   deleteUser(id:number) {
   
-        
-
-   
-
         const dialogConfig = new MatDialogConfig();
     
         dialogConfig.disableClose = true;
