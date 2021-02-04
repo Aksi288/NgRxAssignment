@@ -106,9 +106,6 @@ export class UpdateUserFail implements Action {
 }
 
 
-
-
-
 export class DeleteUserAction implements Action {
     readonly type = userActionTypes.DELETE_USER_ACTION;
     constructor(public payload:  number ) { }

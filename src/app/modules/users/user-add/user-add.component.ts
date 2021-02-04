@@ -38,7 +38,7 @@ export class UserAddComponent implements OnInit {
   whenSubmitClicked(formData: User): void {
     this.store.dispatch(new AddUserAction(formData));
     
- 
+    this.router.navigate(["users/"]);
     
   }
 

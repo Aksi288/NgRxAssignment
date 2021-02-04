@@ -6,11 +6,7 @@ export const SET_ERROR_MESSAGE = '[shared state] set error message';
 
 export enum loadingActionTypes {
   SET_LOADING_ACTION = '[Loading] set loading',
-
   SET_ERROR_MESSAGE = '[Loading] Loading fail',
-
-
-
 }
 
 
