@@ -22,8 +22,8 @@ export class AppComponent {
   }
 
   ngOnInit() {
-   this.showLoading = this.store.select(getLoading);
-   this.errorMessage = this.store.select(getErrorMessage);
+  //  this.showLoading = this.store.select(getLoading);
+  //  this.errorMessage = this.store.select(getErrorMessage);
    
   }
 }

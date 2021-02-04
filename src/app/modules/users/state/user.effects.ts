@@ -48,7 +48,10 @@ export class UsersEffects {
     map((action: GetUser) => action.payload),
     switchMap(id => this.userService.getUserById(id)),
     map(user =>{
-      return new GetUserSuccess(user)  
+
+      return new GetUserSuccess(user)
+      
+      
     }
 ),
     catchError((err) => [new GetUserFail(err)])
@@ -61,8 +64,11 @@ export class UsersEffects {
     map((action: UpdateUserAction) => action.payload),
     switchMap(user => this.userService.updateUser(user)),
     map((data) => {
+      debugger
+     
       this.mssageDisplayService.successMessage("User Updated Successfully.")
       return new UpdateUserSuccess(data)
+
     }
       ),
     catchError((err) => {

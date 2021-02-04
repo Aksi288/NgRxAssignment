@@ -26,7 +26,6 @@ export class UserFormComponent implements OnInit {
   @Output() whenCancelClicked: EventEmitter<any> = new EventEmitter();
   @Output()whenCloseClicked : EventEmitter<any> = new EventEmitter();
 
-  Category$ : Observable<any> ;
   public userID;
   public finalData: any[] = [];
 
@@ -63,7 +62,10 @@ export class UserFormComponent implements OnInit {
     this.usersForm = new FormGroup({
       'id': new FormControl("" ),
       'name': new FormControl("" ,[Validators.required]),
-      'email': new FormControl("",[Validators.required]),
+      'email': new FormControl("",[Validators.required,
+         Validators.email,
+         Validators.minLength(5),
+         Validators.maxLength(254)]),
       'Address': new FormControl("",[Validators.required]),
       'contact': new FormControl(null,[Validators.required]),
       
@@ -137,6 +139,16 @@ export class UserFormComponent implements OnInit {
       if (this.userSubscription) {
         this.userSubscription.unsubscribe();
       }
+    }
+
+    isControlHasError(controlName: string, validationType: string): boolean {
+      const control = this.usersForm.controls[controlName];
+      if (!control) {
+        return false;
+      }
+  
+      const result = control.hasError(validationType) && (control.dirty || control.touched);
+      return result;
     }
  
 }

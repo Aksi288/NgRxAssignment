@@ -9,12 +9,12 @@ import { routerReducer, RouterReducerState } from '@ngrx/router-store';
 
 
 export interface AppState {
-  [SHARED_LOADING_NAME]: LodingState;
-  router: RouterReducerState;
+ // [SHARED_LOADING_NAME]: LodingState;
+ // router: RouterReducerState;
   
 }
 
 export const appReducer = {
-  [SHARED_LOADING_NAME]: LodingReducer,
-  router: routerReducer,
+  //[SHARED_LOADING_NAME]: LodingReducer,
+  //router: routerReducer,
 };
