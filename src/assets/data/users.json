@@ -1,18 +1,11 @@
 {
   "users": [
     {
-      "id": 3,
-      "name": "test",
-      "email": "test",
-      "Address": "test",
-      "contact": "723584723584"
-    },
-    {
-      "id": 4,
-      "name": "jhbdjas",
-      "email": "kgsdfkds",
-      "Address": "jhvdsjfas",
-      "contact": "73t6482364823"
+      "id": 1,
+      "name": "Abhishek",
+      "email": "abhik.msri@gmail.com",
+      "Address": "Noida",
+      "contact": "238754872358"
     }
   ]
 }

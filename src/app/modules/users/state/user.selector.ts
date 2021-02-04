@@ -4,7 +4,7 @@ import { userActionTypes } from './user.action';
 import { getCurrentRoute } from 'src/app/shared-state/router/router.selector';
 import { RouterStateUrl } from 'src/app/shared-state/router/custom-serializer';
 
- export const User_STATE_NAME = 'user';
+ export const User_STATE_NAME = 'users';
 
 export const getUserState = createFeatureSelector < userState > (User_STATE_NAME);
 

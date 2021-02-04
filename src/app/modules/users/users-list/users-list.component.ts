@@ -10,6 +10,7 @@ import { finalize } from 'rxjs/operators';
 import { Router } from '@angular/router';
 import { ConfirmationDialog } from '../../../shared/components/confirmation-dialog.component';
 import { UserEditComponent } from '../user-edit/user-edit.component';
+import { userState } from '../state/user.reducer';
 
 @Component({
   selector: 'app-users-list',
@@ -18,7 +19,7 @@ import { UserEditComponent } from '../user-edit/user-edit.component';
 })
 export class UsersListComponent implements OnInit {
 
-  @ViewChild(MatPaginator) paginator: MatPaginator;
+
 
   public data = new BehaviorSubject<any>([]);
 
@@ -40,7 +41,7 @@ export class UsersListComponent implements OnInit {
 
 
 
-  constructor(private store: Store<AppState>,private router: Router, private dialog: MatDialog) { 
+  constructor(private store: Store<userState>,private router: Router, private dialog: MatDialog) { 
   
   }
 
@@ -123,7 +124,6 @@ this.data.next([])
   }
 
 
-  // users: Observable<User[]>;
 
   
 

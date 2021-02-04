@@ -1,50 +1,62 @@
 <form [formGroup]="usersForm" (ngSubmit)="onSubmit()">
 
+
+
+
+<div  style="min-height: 400px;"> 
   <div class="row">
 
-<!-- First Name Column -->
-<mat-form-field   class="col-6" appearance="outline">
-  <mat-label>Name</mat-label>
-  <input matInput type="text"  placeholder="Name"  formControlName="name" required>  
-  <mat-error *ngIf="NameControl.touched && NameControl.invalid">
-     name is <strong>required field</strong>
-   </mat-error>  
-</mat-form-field>
-  
-<mat-form-field    class="col-6" appearance="outline">
-  <mat-label>Address</mat-label>
-  <input matInput type="email"  placeholder="Email"  formControlName="Address" required> 
-  <mat-error *ngIf="adressControl.touched && adressControl.invalid">
-    Address is <strong>required field</strong>
-   </mat-error>    
-</mat-form-field>
-  
-  </div>
-
-  <div class="row" >
-
+    <!-- First Name Column -->
+    <mat-form-field   class="col-6" appearance="outline">
+      <mat-label>Name</mat-label>
+      <input matInput type="text"  placeholder="Name"  formControlName="name" required>  
+      <mat-error *ngIf="NameControl.touched && NameControl.invalid">
+         name is <strong>required field</strong>
+       </mat-error>  
+    </mat-form-field>
+      
     <mat-form-field    class="col-6" appearance="outline">
-      <mat-label>Email</mat-label>
-      <input matInput type="email"  placeholder="Email"  formControlName="email" required> 
-      <mat-error *ngIf="emailControl.touched && emailControl.invalid">
-        Email is <strong>required field</strong>
+      <mat-label>Address</mat-label>
+      <input matInput type="email"  placeholder="Email"  formControlName="Address" required> 
+      <mat-error *ngIf="adressControl.touched && adressControl.invalid">
+        Address is <strong>required field</strong>
        </mat-error>    
     </mat-form-field>
-  
+      
+      </div>
+    
+      <div class="row" >
+    
+        <mat-form-field    class="col-6" appearance="outline">
+          <mat-label>Email</mat-label>
+          <input matInput type="email"  placeholder="Email"  formControlName="email" required> 
+          <mat-error *ngIf="isControlHasError('email','required')">
+            Email is <strong>required field</strong>
+          </mat-error>
+          <mat-error *ngIf="isControlHasError('email','email')">
+            <strong>Field is not valid.</strong>
+          </mat-error>
+          <mat-error *ngIf="isControlHasError('email','minlength')">
+            <strong> Minimum field length 5</strong>
+          </mat-error>
+          <mat-error *ngIf="isControlHasError('email','maxlength')">
+            <strong>Maximum field length 254</strong>
+          </mat-error>   
+        </mat-form-field>
+      
+    
+        <mat-form-field    class="col-6" appearance="outline">
+          <mat-label>Phone Number</mat-label>
+          <input matInput type="email"  placeholder="Phone Number"  formControlName="contact" required> 
+          <mat-error *ngIf="contactControl.touched && contactControl.invalid">
+            Phone Number is <strong>required field</strong>
+           </mat-error>    
+        </mat-form-field>
+    
+         
+      </div>
 
-    <mat-form-field    class="col-6" appearance="outline">
-      <mat-label>Phone Number</mat-label>
-      <input matInput type="email"  placeholder="Phone Number"  formControlName="contact" required> 
-      <mat-error *ngIf="contactControl.touched && contactControl.invalid">
-        Email is <strong>required field</strong>
-       </mat-error>    
-    </mat-form-field>
-
-     
-  </div>
-
-
-
+</div>
 
 <div class="modal-footer" >
   <ng-content  selector=".submit-button"></ng-content>
