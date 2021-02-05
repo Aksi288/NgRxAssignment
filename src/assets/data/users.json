@@ -1,11 +1,43 @@
 {
-  "users": [
+  "usersData": [
     {
       "id": 1,
-      "name": "Abhishek",
-      "email": "abhik.msri@gmail.com",
+      "name": "Abhishek Singh",
+      "email": "abhik.msrit@gmail.com",
+      "Address": "Noida7245237",
+      "contact": "7623846238746328"
+    },
+    {
+      "id": 2,
+      "name": "Abhishek Singh",
+      "email": "abhik.msrit@gmail.com",
+      "Address": "Noida1224763257",
+      "contact": "265745376423"
+    },
+    {
+      "id": 3,
+      "name": "Abhishek Singh",
+      "email": "abhik.msrit@gmail.com",
+      "Address": "Noida12",
+      "contact": "712537215"
+    },
+    {
+      "id": 4,
+      "name": "abhik.msrit@gmail.com",
+      "email": "test@testcm",
+      "Address": "tes",
+      "contact": "8723548723"
+    }
+  ],
+  "me": [
+    {
+      "id": 1,
+      "username": "Abhi@288",
+      "email": "abhik.msrit@gmail.com",
+      "password": "1234567",
       "Address": "Noida",
-      "contact": "238754872358"
+      "contact": "238754872358",
+      "AuthToken": "123456"
     }
   ]
 }

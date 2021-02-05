@@ -1,4 +1,4 @@
-import { Update } from '@ngrx/entity';
+
 
 import { User } from '../../../models/user.model';
 import { Action } from '@ngrx/store';
@@ -7,6 +7,12 @@ import { Action } from '@ngrx/store';
 
 
 export enum userActionTypes {
+
+    LOAD_USER = '[users page] load users',
+    LOAD_USER_SUCCESS = '[users page] load users success',
+    LOAD_USER_FAIL = '[users page] load users fail',
+
+
     ADD_USER_ACTION = '[ALL] add User',
     ADD_USER_SUCCESS = '[ALL] add User success',
     ADD_USER_FAIL = '[ALL] add User fail',
@@ -26,9 +32,6 @@ export enum userActionTypes {
     DELETE_USER_FAIL = '[users page] delete user fail',
 
 
-    LOAD_USER = '[users page] load users',
-    LOAD_USER_SUCCESS = '[users page] load users success',
-    LOAD_USER_FAIL = '[users page] load users fail',
 }
 
 

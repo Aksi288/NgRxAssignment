@@ -3,7 +3,7 @@
 
 
 
-<div  style="min-height: 400px;"> 
+<div  style="min-height: 300px;"> 
   <div class="row">
 
     <!-- First Name Column -->
@@ -60,11 +60,11 @@
 
 <div class="modal-footer" >
   <ng-content  selector=".submit-button"></ng-content>
-  <div *ngIf="!isViewMode"  (click)="onCancel()" class="btn btn-secondary btn-md btn-tall btn-wide kt-font-bold kt-font-transform-u"
+  <div *ngIf="!isViewMode"  (click)="onCancel()" class="btn btn-outline-secondary"
     data-ktwizard-type="action-prev">
     Cancel
   </div>
-  <div *ngIf="isViewMode"  (click)="onClose()" class="btn btn-secondary btn-md btn-tall btn-wide kt-font-bold kt-font-transform-u"
+  <div *ngIf="isViewMode"  (click)="onClose()" class="btn btn-outline-secondary"
   data-ktwizard-type="action-prev">
   Close
 </div>

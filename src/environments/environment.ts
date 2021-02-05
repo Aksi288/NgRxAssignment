@@ -4,8 +4,9 @@
 import api_end_url from './application_api'
 export const environment = {
   production: false,
-  api_url:"http://localhost:3000/",
-  apiUrlEnd : api_end_url
+  api_url:"http://localhost:8000/",
+  apiUrlEnd : api_end_url,
+  authTokenKey: ""
 };
 
 /*

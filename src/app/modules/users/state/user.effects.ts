@@ -35,7 +35,11 @@ export class UsersEffects {
   getAllUsers$: Observable<Action> = this.actions$.pipe(
     ofType(userAction.userActionTypes.LOAD_USER),
     switchMap(() => this.userService.getAllUser()),
-    map((users) => new LoadAllUserSuccess(users)),
+    map((users) =>{
+     return new LoadAllUserSuccess(users)
+    }
+    
+    ),
     catchError((err) => {
       this.mssageDisplayService.failureMessage("Users Loading Fail.")
      return of(new LoadAllUserFail(err))
@@ -64,8 +68,6 @@ export class UsersEffects {
     map((action: UpdateUserAction) => action.payload),
     switchMap(user => this.userService.updateUser(user)),
     map((data) => {
-      debugger
-     
       this.mssageDisplayService.successMessage("User Updated Successfully.")
       return new UpdateUserSuccess(data)
 

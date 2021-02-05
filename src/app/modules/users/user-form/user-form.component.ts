@@ -91,9 +91,6 @@ export class UserFormComponent implements OnInit {
 
     }
     if(this.isViewMode){
-      debugger
- 
-
      this.usersForm.patchValue(this.userData);
       this.usersForm.disable();   
   }

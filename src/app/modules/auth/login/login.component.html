@@ -1,0 +1,56 @@
+
+<form [formGroup]="loginForm" (ngSubmit)="onSubmit()">
+
+    <div class="example-container">
+        <h4>Login </h4>
+        <mat-form-field appearance="outline">
+            <mat-label>Email</mat-label>
+            <input matInput placeholder="Email" formControlName="email">
+            <mat-error *ngIf="isControlHasError('email','required')">
+                Email is <strong>required field</strong>
+            </mat-error>
+            <mat-error *ngIf="isControlHasError('email','email')">
+                <strong>Field is not valid.</strong>
+            </mat-error>
+            <mat-error *ngIf="isControlHasError('email','minlength')">
+                <strong> Minimum field length 5</strong>
+            </mat-error>
+            <mat-error *ngIf="isControlHasError('email','maxlength')">
+                <strong>Maximum field length 254</strong>
+            </mat-error>
+        </mat-form-field>
+
+        <mat-form-field appearance="outline">
+
+            <mat-label>Password</mat-label>
+            <input matInput [type]="hide ? 'password' : 'text'" placeholder="Enter Password" formControlName="password"
+                autocomplete="off" />
+
+            <mat-icon matSuffix style="cursor: pointer;" (click)="hide = !hide">{{hide ? 'visibility_off' :
+                'visibility'}}</mat-icon>
+
+            <mat-error *ngIf="isControlHasError('password','required')">
+                Password is <strong>required field</strong>
+            </mat-error>
+            <mat-error *ngIf="isControlHasError('password','minlength')">
+                <strong> Minimum field length 5</strong>
+            </mat-error>
+            <mat-error *ngIf="isControlHasError('password','maxlength')">
+                <strong>Maximum field length 254</strong>
+            </mat-error>
+        </mat-form-field>
+
+
+
+
+        <div class="modal-footer">
+            <button type="submit" [disabled]="!loginForm.valid"
+                class="btn btn-outline-success my-2 my-sm-0 pull-right"
+                data-ktwizard-type="action-submit">
+                Sign In
+            </button>
+        </div>
+
+    </div>
+
+</form>
