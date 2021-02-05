@@ -10,7 +10,6 @@ import {tap} from 'rxjs/operators';
 export class AuthGuard implements CanActivate {
     constructor(private router :Router,private store: Store<AppState>){}
     canActivate(route :ActivatedRouteSnapshot, state: RouterStateSnapshot):Observable<boolean>{
-        debugger
         return this.store.pipe(select(isLoggedIn),
         tap(loggedIn=>{
             if(!loggedIn){

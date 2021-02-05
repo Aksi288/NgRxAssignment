@@ -1,4 +1,4 @@
-let users: string = `users/`;
+let users: string = `usersData/`;
 let auth : string = `auth/`;
 
 export default {
@@ -9,6 +9,9 @@ export default {
     },
     auth:{
       login :`${auth}login/`
+    },
+   authUer:{
+      me :`me/`
     }
 
 }

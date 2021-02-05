@@ -1,101 +1,130 @@
-<div class="container">
+<div class="page-content-wrapper">
+  <div class="page-content">
+    <div class="row">
 
-  <h4> Users </h4>
-  <div class="title-holder">
-    <button mat-raised-button color="primary"  (click)="AddUsers($event)"><i class="fa fa-plus" aria-hidden="true"></i> New User</button>
-  </div>
- 
-  
-  <div class="mat-elevation-z8">
+      <div class="col-lg-12 col-xs-12 col-sm-12">
+        <div class="portlet transparent">
 
-        <mat-table #table 
-        [dataSource]="dataSource.data"
-         matSort >
-          <!-- Order  Number Column -->
-          <ng-container matColumnDef="name">
-            <mat-header-cell *matHeaderCellDef > Name </mat-header-cell>
-            <mat-cell *matCellDef="let element"> {{element.name}} </mat-cell>
-          </ng-container>
-  
-  
-         
-  
-  
-          <!-- Customer ID Column -->
-          <ng-container matColumnDef="email">
-            <mat-header-cell *matHeaderCellDef > Email Address </mat-header-cell>
-            <mat-cell *matCellDef="let element"> {{element.email}} </mat-cell>
-          </ng-container>
+          <div class="portlet-title">
+            <div class="caption">
+              <span class="caption-subject bold font-dark">
+                Users
+              </span>
+              <div class="actions pull-right" style="display: inline-block;margin-left: 900px;">
+                <button class="btn btn-outline-primary" color="primary" (click)="AddUsers($event)"><i class="fa fa-plus"
+                    aria-hidden="true"></i> New User</button>
+              </div>
 
-         
-          
-          <!-- Customer ID Column -->
-          <ng-container matColumnDef="phone_number">
-            <mat-header-cell *matHeaderCellDef > Phone Number </mat-header-cell>
-            <mat-cell *matCellDef="let element"> {{element.contact}} </mat-cell>
-          </ng-container>
+            </div>
+          </div>
 
+          <div class="portlet-body">
+            <div class="mat-elevation-z8">
 
-          <ng-container matColumnDef="address">
-            <mat-header-cell *matHeaderCellDef >Address </mat-header-cell>
-            <mat-cell *matCellDef="let element"> {{element.Address}} </mat-cell>
-          </ng-container>
-
-    
+              <mat-table #table [dataSource]="dataSource.data" matSort>
+                <ng-container matColumnDef="name">
+                  <mat-header-cell *matHeaderCellDef> Name </mat-header-cell>
+                  <mat-cell *matCellDef="let element"> {{element.name}} </mat-cell>
+                </ng-container>
 
 
 
-  
-          <ng-container matColumnDef="actions">
-            <mat-header-cell class="action" *matHeaderCellDef> Actions </mat-header-cell>
-            <mat-cell class="action" *matCellDef="let element">
-                <div fxFlex="row" fxLayoutAlign="end center">
-                    <button mat-icon-button [matMenuTriggerFor]="moreMenu" aria-label="More"
+
+
+                <!-- Customer ID Column -->
+                <ng-container matColumnDef="email">
+                  <mat-header-cell *matHeaderCellDef> Email Address </mat-header-cell>
+                  <mat-cell *matCellDef="let element"> {{element.email}} </mat-cell>
+                </ng-container>
+
+
+
+                <!-- Customer ID Column -->
+                <ng-container matColumnDef="phone_number">
+                  <mat-header-cell *matHeaderCellDef> Phone Number </mat-header-cell>
+                  <mat-cell *matCellDef="let element"> {{element.contact}} </mat-cell>
+                </ng-container>
+
+
+                <ng-container matColumnDef="address">
+                  <mat-header-cell *matHeaderCellDef>Address </mat-header-cell>
+                  <mat-cell *matCellDef="let element"> {{element.Address}} </mat-cell>
+                </ng-container>
+
+
+
+
+
+
+                <ng-container matColumnDef="actions">
+                  <mat-header-cell class="action" *matHeaderCellDef> Actions </mat-header-cell>
+                  <mat-cell class="action" *matCellDef="let element">
+                    <div fxFlex="row" fxLayoutAlign="end center">
+                      <button mat-icon-button [matMenuTriggerFor]="moreMenu" aria-label="More"
                         (click)="$event.stopPropagation()">
                         <mat-icon class="secondary-text">more_vert</mat-icon>
-                    </button>
-                    <mat-menu #moreMenu="matMenu">
-                   
-                        <button mat-menu-item aria-label="view"  (click)="viewUser(element)"  color="primary" matTooltip="View">
-                            <mat-icon>remove_red_eye</mat-icon>
-                            <span>View</span>
+                      </button>
+                      <mat-menu #moreMenu="matMenu">
+
+                        <button mat-menu-item aria-label="view" (click)="viewUser(element)" color="primary"
+                          matTooltip="View">
+                          <mat-icon>remove_red_eye</mat-icon>
+                          <span>View</span>
                         </button>
-                      
-                      
-                        <button mat-menu-item aria-label="edit"  (click)="editUser(element.id)" color="primary" matTooltip="Edit">
+
+
+                        <button mat-menu-item aria-label="edit" (click)="editUser(element.id)" color="primary"
+                          matTooltip="Edit">
                           <mat-icon>mode_edit</mat-icon>
                           <span>Edit</span>
-                      </button>
-
-                    
-
-                        <button mat-menu-item aria-label="delete"  (click)="deleteUser(element.id)"  color="primary" matTooltip="Delete">
-                            <mat-icon>delete</mat-icon>
-                            <span>Delete</span>
                         </button>
-                      
-                    </mat-menu>
-                </div>
-            </mat-cell>
-        </ng-container>
-        <mat-header-row *matHeaderRowDef="displayedColumns"></mat-header-row>
-    
 
-        <mat-row *matRowDef="let row; columns: displayedColumns;"></mat-row>
-      </mat-table>
-     
-      <div class="table-loader"  *ngIf="loading$ | async">
-        <mat-spinner diameter="30" strokeWidth="3" ></mat-spinner>
+
+
+                        <button mat-menu-item aria-label="delete" (click)="deleteUser(element.id)" color="primary"
+                          matTooltip="Delete">
+                          <mat-icon>delete</mat-icon>
+                          <span>Delete</span>
+                        </button>
+
+                      </mat-menu>
+                    </div>
+                  </mat-cell>
+                </ng-container>
+                <mat-header-row *matHeaderRowDef="displayedColumns"></mat-header-row>
+
+
+                <mat-row *matRowDef="let row; columns: displayedColumns;"></mat-row>
+              </mat-table>
+
+              <div class="table-loader" *ngIf="loading$ | async">
+                <mat-spinner diameter="30" strokeWidth="3"></mat-spinner>
+              </div>
+
+
+              <div class="mat-table__message" style="min-height: 222px;text-align: center;margin:100px" *ngIf="(totalData$ | async) == 0">No records found</div>
+
+
+
+
+
+            </div>
+          </div>
+
+
+
+
+
+
+        </div>
       </div>
 
-     
-      <div class="mat-table__message" style="min-height: 222px;
-      text-align: center;margin:100px
-  " *ngIf="(totalData$ | async) == 0">No records found</div>
-  
-  
-   
 
- 
-</div>
+    </div>
+
+  </div>
+
+
+
+
 </div>

@@ -47,8 +47,10 @@ import {
 	MatTreeModule,
 } from '@angular/material';
 import { CoreModule } from '../../core/core.module';
-import { HttpClientModule } from '@angular/common/http';
+import { HttpClientModule, HTTP_INTERCEPTORS } from '@angular/common/http';
 import { AuthEffects } from './state/auth.effects';
+import { SharedModule } from 'src/app/shared/shared.module';
+//import { HttpInterceptorsClass } from 'src/app/core/interceptors/interceptors.service';
 
 
 const routes: Routes = [
@@ -113,8 +115,13 @@ const routes: Routes = [
     MatSliderModule,
     MatSlideToggleModule,
     MatToolbarModule,
-    MatTreeModule
+    MatTreeModule,
+    SharedModule
   
+  ],
+  providers:[
+    // HttpInterceptorsClass,
+    // {provide:HTTP_INTERCEPTORS , useClass: HttpInterceptorsClass , multi: true},
   ]
 })
 export class AuthModule {

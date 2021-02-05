@@ -28,7 +28,6 @@ export class AuthEffects {
     logout$ = this.actions$.pipe(
         ofType<Logout>(AuthActionTypes.Logout),
         tap(() => {
-            debugger
             localStorage.removeItem(environment.authTokenKey);
 			         this.router.navigate(['/auth/login'], {queryParams: {returnUrl: this.returnUrl}});
         })

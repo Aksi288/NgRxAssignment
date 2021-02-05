@@ -31,7 +31,6 @@ import {
   MatTooltipModule,
 } from '@angular/material';
 import { ConfirmationDialog } from './components/confirmation-dialog.component';
-import { LoadingSpinnerComponent } from './components/loading-spinner/loading-spinner.component';
 import { MessageDisplayService } from './service/message-display.service';
 
 @NgModule({

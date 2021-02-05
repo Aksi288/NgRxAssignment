@@ -18,17 +18,19 @@ export class UserService {
 
 
   public getAllUser(): Observable<User[]> {
-    const userToken = localStorage.getItem(environment.authTokenKey);
-    let httpHeaders = new HttpHeaders();
-    httpHeaders.set('Authorization', 'Bearer' + userToken)
+  const userToken = localStorage.getItem(environment.authTokenKey);
+  let httpHeaders = new HttpHeaders();
+  httpHeaders =  httpHeaders.set('Authorization', 'Bearer ' + userToken);
+
+  
     return this.apiService.get(environment.apiUrlEnd.users.list,httpHeaders);
   }
 
 
   public getUserById(userId: number): Observable<User> {
-    const userToken = localStorage.getItem(environment.authTokenKey);
-    let httpHeaders = new HttpHeaders();
-    httpHeaders.set('Authorization', 'Bearer' + userToken)
+const userToken = localStorage.getItem(environment.authTokenKey);
+let httpHeaders = new HttpHeaders();
+httpHeaders =  httpHeaders.set('Authorization', 'Bearer ' + userToken);
     return this.apiService.get(environment.apiUrlEnd.users.details.replace('#', `${userId}`),httpHeaders)
   }
 
@@ -36,16 +38,18 @@ export class UserService {
   public deleteUser(userId: number): Observable<User> {
     const userToken = localStorage.getItem(environment.authTokenKey);
     let httpHeaders = new HttpHeaders();
-    httpHeaders.set('Authorization', 'Bearer' + userToken)
-    return this.apiService.delete(environment.apiUrlEnd.users.details.replace('#', `${userId}`))
+    httpHeaders =  httpHeaders.set('Authorization', 'Bearer ' + userToken);
+
+    return this.apiService.delete(environment.apiUrlEnd.users.details.replace('#', `${userId}`),httpHeaders)
   }
 
 
   public addUser(data: User): Observable<User> {
-const userToken = localStorage.getItem(environment.authTokenKey);
-    let httpHeaders = new HttpHeaders();
-    httpHeaders.set('Content-Type', 'application/json; charset=utf-8');
-    httpHeaders.set('Authorization', 'Bearer' + userToken)
+    const userToken = localStorage.getItem(environment.authTokenKey);
+    let httpHeaders = new HttpHeaders({
+      'Content-Type':  'application/json',
+      'Authorization': 'Bearer ' + userToken
+    });
     return this.apiService.post(environment.apiUrlEnd.users.list, data, httpHeaders);
   }
 
@@ -53,9 +57,10 @@ const userToken = localStorage.getItem(environment.authTokenKey);
 
   updateUser( body: User): Observable<any> {
     const userToken = localStorage.getItem(environment.authTokenKey);
-    let httpHeaders = new HttpHeaders();
-    httpHeaders.set('Content-Type', 'application/json; charset=utf-8');
-    httpHeaders.set('Authorization', 'Bearer' + userToken)
+    let httpHeaders = new HttpHeaders({
+      'Content-Type':  'application/json',
+      'Authorization': 'Bearer ' + userToken
+    });
     return this.apiService.put(environment.apiUrlEnd.users.details.replace('#', `${body.id}`), body,httpHeaders);
   }
   

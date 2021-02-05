@@ -19,12 +19,14 @@ import { CustomSerializer } from './shared-state/router/custom-serializer';
 import { NotFoundPageComponent } from './components/not-found-page/not-found-page.component';
 import { AuthModule } from './modules/auth/auth.module';
 import { HttpClientModule } from '@angular/common/http';
+import { LoadingSpinnerComponent } from './shared/components/loading-spinner/loading-spinner.component';
 @NgModule({
   declarations: [
     AppComponent,
     HeaderComponent,
     HomeComponent,
-    NotFoundPageComponent
+    NotFoundPageComponent,
+    LoadingSpinnerComponent
   ],
   imports: [
     BrowserModule,

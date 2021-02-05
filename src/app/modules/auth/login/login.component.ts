@@ -8,6 +8,9 @@ import { AppState } from 'src/app/shared-state/app.state';
 import { Store } from '@ngrx/store';
 import { Login } from '../state/auth.action';
 import { Router } from '@angular/router';
+import { MessageDisplayService } from 'src/app/shared/service/message-display.service';
+import { AuthService } from '../service/auth.service';
+import { setError, setLoading } from 'src/app/shared-state/loadingState/loading.actions';
 
 @Component({
   selector: 'app-login',
@@ -19,7 +22,10 @@ export class LoginComponent implements OnInit {
   hide:boolean= true;
   constructor(private apiService : ApiService,
     private store:Store<AppState>,
-    private router :Router) { }
+    private router :Router,
+      private msgDisplayService: MessageDisplayService,
+      private authService : AuthService
+    ) { }
 
   ngOnInit(): void {
     this.createForm()
@@ -36,18 +42,35 @@ export class LoginComponent implements OnInit {
   }
 
   onSubmit(){
-    debugger
     const data = this.loginForm.value;
     let headers = new HttpHeaders();
+    this.store.dispatch(new setLoading(true));
     headers = headers.set('Content-Type', 'application/json; charset=utf-8');
     if(this.loginForm.valid){
+      
         this.apiService.post(environment.apiUrlEnd.auth.login, data,headers).subscribe(  response => {
-
-         this.store.dispatch(new Login({authToken: response.access_token}));
-         this.router.navigateByUrl('/')
+         this.store.dispatch(new setLoading(false));
+         this.store.dispatch(new setError(""))
+          this.store.dispatch(new Login({authToken: response.access_token}));
+          this.authService.populate((error,done) =>{
+            if(done){
+              this.router.navigateByUrl('/')
+            }
+          })
+   
+        
+         
         },
         err => {
- 
+          if(err["status"]){
+            this.store.dispatch(new setLoading(false));
+            const isUnauthorized: boolean = err.status === 401;
+            if(isUnauthorized)
+            this.msgDisplayService.failureMessage("User is Unauthorized.")
+          }else{
+            this.msgDisplayService.failureMessage("Run Server First .")
+          }
+
         })
     }
   }

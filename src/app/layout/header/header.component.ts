@@ -20,7 +20,6 @@ export class HeaderComponent implements OnInit {
   }
 
   logOut(){
-    debugger
     this.store.dispatch(new Logout());
   }
 

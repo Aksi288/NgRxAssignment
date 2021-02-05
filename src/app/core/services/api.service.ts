@@ -13,22 +13,21 @@ export class ApiService {
     return throwError(error.error);
   }
 
-  get(path: string, params): Observable<any> {
+  get(path: string, params?): Observable<any> {
     return this.http
-      .get(`${environment.api_url}${path}`, { params })
+      .get(`${environment.api_url}${path}`, { headers: params })
       .pipe(catchError(this.formatErrors));
   }
 
   put(path: string, body: Object = {}, headers): Observable<any> {
     return this.http
-      .put(`${environment.api_url}${path}`, JSON.stringify(body),{headers})
+      .put(`${environment.api_url}${path}`, JSON.stringify(body),{headers:headers})
       .pipe(catchError(this.formatErrors));
   }
 
   post(path: string, body: Object = {}, headers?): Observable<any> {
-    debugger
     return this.http
-      .post(`${environment.api_url}${path}`, JSON.stringify(body),{headers})
+      .post(`${environment.api_url}${path}`, JSON.stringify(body),{headers:headers})
       .pipe(catchError(this.formatErrors));
   }
 
@@ -38,9 +37,9 @@ export class ApiService {
       .pipe(catchError(this.formatErrors));
   }
 
-  delete(path: string): Observable<any> {
+  delete(path: string, params?): Observable<any> {
     return this.http
-      .delete(`${environment.api_url}${path}`)
+      .delete(`${environment.api_url}${path}`, { headers: params })
       .pipe(catchError(this.formatErrors));
   }
 }
